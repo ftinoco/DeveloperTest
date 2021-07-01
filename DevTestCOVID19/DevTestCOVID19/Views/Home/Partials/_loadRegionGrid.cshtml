@@ -1,0 +1,21 @@
+﻿@model IEnumerable<DevTestCOVID19.Models.ViewModels.RegionViewModel>
+
+<table class="table table-sm table-hover table-striped">
+    <thead>
+        <tr> 
+            <th scope="col">REGION</th>
+            <th scope="col">CASES</th>
+            <th scope="col">DEATHS</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr> 
+                <td>@item.Name</td>
+                <td>@item.Cases.ToString("#,##0.00")</td>
+                <td>@item.Deaths.ToString("#,##0.00")</td>
+            </tr>
+        } 
+    </tbody>
+</table>

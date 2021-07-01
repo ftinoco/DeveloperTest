@@ -1,0 +1,20 @@
+﻿@model IEnumerable<DevTestCOVID19.Models.ViewModels.RegionInfoViewModel>
+
+@{
+    var list = Model ?? new List<DevTestCOVID19.Models.ViewModels.RegionInfoViewModel>();
+    string selectedValue = ViewData["SelectedValue"] == null ? string.Empty : ViewData["SelectedValue"].ToString();
+}
+<select class="form-control" id="ddlRegion">
+    <option value="">-- Select a region --</option>
+    @foreach (var item in list)
+    {
+        if (item.ISO.Equals(selectedValue))
+        {
+            <option value="@item.ISO" selected>@item.Name</option>
+        }
+        else
+        {
+            <option value="@item.ISO">@item.Name</option>
+        }
+    }
+</select>

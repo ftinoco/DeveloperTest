@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row pb-3">
+    <div class="col-3">
+        <vc:region selected-value=""></vc:region>
+    </div>
+    <div class="col-sm">
+        <button type="button" id="btnReport" disabled class="btn btn-primary">Report</button>
+        <button type="button" id="btnReset" disabled class="btn btn-primary">Reset</button>
+    </div>
+    <div class="col-sm"></div>
+    <div class="col-sm text-right">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary">XML</button>
+            <button type="button" class="btn btn-secondary">JSON</button>
+            <button type="button" class="btn btn-secondary">CSV</button>
+        </div>
+    </div>
+</div>
+<div id="table-container"></div>
+@section Scripts{
+    <script type="text/javascript">
+        var loadGridUrl = '@Url.Action("LoadGrid", "Home")';
+        var loadGridByRegionUrl = '@Url.Action("LoadGridByRegion", "Home")';
+    </script>
+}
