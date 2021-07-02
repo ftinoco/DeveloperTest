@@ -30,8 +30,13 @@ namespace DevTestCOVID19.BusinessLogic.Implemantations
          
         public async Task<List<APIResponseDTO>> GetTop10ProvincesWithMostCases(string ISO)
         {
-            var result = await _statisticsAPIRequests.GetAPIResponse<APIResponseDTO>($"{_appSettings.BaseAPIURL}/reports?iso={ISO}");
-            return result.OrderByDescending(x => x.Confirmed).Take(10).ToList();
+            if (!string.IsNullOrWhiteSpace(ISO))
+            { 
+                var result = await _statisticsAPIRequests.GetAPIResponse<APIResponseDTO>($"{_appSettings.BaseAPIURL}/reports?iso={ISO}");
+                return result.OrderByDescending(x => x.Confirmed).Take(10).ToList();
+            }
+            else
+                return null;
         }
 
         public async Task<List<APIResponseDTO>> GetTop10RegionsWithMostCases()

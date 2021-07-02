@@ -75,6 +75,8 @@ namespace DevTestCOVID19.Controllers
         public async Task<IActionResult> LoadGridByProvince(string region)
         {
             var result = await _APIRequestService.GetTop10ProvincesWithMostCases(region);
+            if (result == null)
+                return NotFound();
             var model = _mapper.Map<List<ProvinceViewModel>>(result);
             return PartialView("Partials/_loadProvinceGrid", model);
         }
