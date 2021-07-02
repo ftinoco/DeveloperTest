@@ -11,18 +11,24 @@
         <button type="button" id="btnReset" disabled class="btn btn-primary">Reset</button>
     </div>
     <div class="col-sm"></div>
-    <div class="col-sm text-right">
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary">XML</button>
-            <button type="button" class="btn btn-secondary">JSON</button>
-            <button type="button" class="btn btn-secondary">CSV</button>
+    <div class="col-sm text-right"> 
+        <div class="btn-group" role="group">
+            <form id="frmExportXML" asp-action="ExportXMLByRegion" asp-controller="Home" method="post">
+                <button type="submit" class="btn btn-secondary mr-1">XML</button>
+            </form>
+            <form id="frmExportJSON" asp-action="ExportJSONByRegion" asp-controller="Home" method="post">
+                <button type="submit" class="btn btn-secondary mr-1">JSON</button>
+            </form>
+            <form id="frmExportCSV" asp-action="ExportCSVByRegion" asp-controller="Home" method="post">
+                <button type="submit" class="btn btn-secondary">CSV</button>
+            </form>
         </div>
     </div>
 </div>
 <div id="table-container"></div>
 @section Scripts{
     <script type="text/javascript">
-        var loadGridUrl = '@Url.Action("LoadGrid", "Home")';
-        var loadGridByRegionUrl = '@Url.Action("LoadGridByRegion", "Home")';
+        var loadGridUrl = '@Url.Action("LoadGridByRegion", "Home")';
+        var loadGridByRegionUrl = '@Url.Action("LoadGridByProvince", "Home")';
     </script>
 }
