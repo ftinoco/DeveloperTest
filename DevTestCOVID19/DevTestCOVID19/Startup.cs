@@ -1,3 +1,5 @@
+using DevTestCOVID19.BusinessLogic.Implemantations;
+using DevTestCOVID19.BusinessLogic.Interfaces;
 using DevTestCOVID19.Configurations;
 using DevTestCOVID19.Utilities;
 using Microsoft.AspNetCore.Builder;
@@ -26,7 +28,7 @@ namespace DevTestCOVID19
         {
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
-            services.AddTransient<IStatisticsAPIRequests, StatisticsAPIRequests>();
+            services.AddTransient<IAPIRequestService, APIRequestService>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
