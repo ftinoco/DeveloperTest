@@ -9,7 +9,7 @@ namespace DevTestCOVID19.BusinessLogic.Interfaces
     public interface IAPIRequestService
     {
         Task<List<APIRegionInfoDTO>> GetAllRegions();
-        Task<List<APIResponseDTO>> GetTop10RegionsWithMostCases(DateTime date);
-        Task<List<APIResponseDTO>> GetTop10ProvincesWithMostCases(DateTime date, string ISO); 
+        Task<List<APIResponseDTO>> GetTop10RegionsWithMostCases();
+        Task<List<APIResponseDTO>> GetTop10ProvincesWithMostCases(string ISO); 
     }
 }

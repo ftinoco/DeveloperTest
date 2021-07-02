@@ -29,6 +29,8 @@ namespace DevTestCOVID19
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             services.AddTransient<IAPIRequestService, APIRequestService>();
+            services.AddTransient<IExportByRegion, ExportHelperByRegion>();
+            services.AddTransient<IExportByProvince, ExportHelperByProvince>();
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

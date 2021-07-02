@@ -28,13 +28,13 @@ namespace DevTestCOVID19.BusinessLogic.Implemantations
             return result.OrderBy(x => x.Name).ToList();
         }
          
-        public async Task<List<APIResponseDTO>> GetTop10ProvincesWithMostCases(DateTime date, string ISO)
+        public async Task<List<APIResponseDTO>> GetTop10ProvincesWithMostCases(string ISO)
         {
             var result = await _statisticsAPIRequests.GetAPIResponse<APIResponseDTO>($"{_appSettings.BaseAPIURL}/reports?iso={ISO}");
             return result.OrderByDescending(x => x.Confirmed).Take(10).ToList();
         }
 
-        public async Task<List<APIResponseDTO>> GetTop10RegionsWithMostCases(DateTime date)
+        public async Task<List<APIResponseDTO>> GetTop10RegionsWithMostCases()
         { 
             var result = await _statisticsAPIRequests.GetAPIResponse<APIResponseDTO>($"{_appSettings.BaseAPIURL}/reports");
             List<APIResponseDTO> lst = new List<APIResponseDTO>();
