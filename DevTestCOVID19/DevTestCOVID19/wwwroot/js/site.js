@@ -3,9 +3,11 @@
 
 // Write your JavaScript code. 
 $(function () {
+    loading('#table-container');
     $('#table-container').load(loadGridUrl);
 
     $('#btnReset').on('click', function () {
+        loading('#table-container');
         $('#table-container').load(loadGridUrl);
         $('#ddlRegion').val('');
         $('#btnReport').off('click');
@@ -22,12 +24,21 @@ $(function () {
             $('#btnReport').on('click', function () {
                 var regionISO = $('#ddlRegion').val();
                 if (regionISO) {
-                    $('#table-container').html('');
+                    loading('#table-container');
                     $('#table-container').load(`${loadGridByRegionUrl}?region=${regionISO}`, function () {
                         $('#btnReset').attr('disabled', false);
-                    });                    
+                    });
                 }
             });
         }
     })
-}())
+}());
+
+function loading(selector) {
+    $(selector).html('<div class="d-flex align-items-center justify-content-center"> \
+                        <div class= "spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">\
+                            <span class="sr-only">Loading...</span>\
+                        </div>\
+                         <strong class="ml-3">Loading...</strong>\
+                     </div>');
+}
